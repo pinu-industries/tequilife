@@ -237,4 +237,12 @@
   });
 
   renderFilters(); renderGrid(); renderCart();
+
+  /* ---------- Enlaces directos: ?color=azul abre ese tequila, #carrito abre el carrito ---------- */
+  const qColor = new URLSearchParams(location.search).get('color');
+  if (TONES[qColor]) {
+    const radio = document.querySelector(`input[name="tone"][value="${qColor}"]`);
+    if (radio) { radio.checked = true; setTone(qColor); }
+  }
+  if (location.hash === '#carrito') openCart();
 })();
