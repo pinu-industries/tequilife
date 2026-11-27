@@ -10,7 +10,11 @@ La demo conserva la identidad de la marca (logo, fotos y colores) y resuelve los
 - Los productos de la tienda no están organizados.
 - Hay textos en inglés y faltas de ortografía.
 
-## Cómo verla
+## Dónde verla
+
+Publicada en <https://tequilife.pinuindustries.com/?demo> con GitHub Pages, desde la rama `main`. No aparece en buscadores.
+
+### En local
 
 Desde la raíz del proyecto:
 
@@ -93,3 +97,4 @@ Todos los colores están como variables CSS al inicio de `styles.css`.
 - Los precios son los publicados en el sitio actual.
 - La demo está preparada para publicarse como propuesta: no se indexa en buscadores (`noindex` y `robots.txt`), muestra una franja de "Propuesta de diseño por Pinu Industries" y el newsletter aclara que no envía datos. Si el cliente aprueba el proyecto, hay que quitar esas tres cosas antes de lanzar el sitio real.
 - El diseño siguió las guías de la skill [Impeccable](https://github.com/pbakaus/impeccable). Se usaron solo sus documentos; no se instaló el plugin ni se ejecutó su programa.
+- Se revisó con el linter de la skill [Hallmark](https://github.com/Nutlope/hallmark) (`sloplint`) sin instalarla. Se corrigieron los hallazgos de accesibilidad y layout; los de estilo propios de Hallmark se descartaron a propósito.
