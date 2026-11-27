@@ -50,6 +50,10 @@ p{margin:0;text-wrap:pretty}
 .btn .icon{width:20px;height:20px}
 
 /* ---------- Promo bar ---------- */
+.demo-bar{background:var(--lime);color:var(--teal-950);font-size:.82rem;line-height:1.4;text-align:center;padding:7px 16px;border-bottom:1px solid color-mix(in srgb,var(--teal-950) 14%,transparent)}
+.demo-bar p{margin:0;max-width:none}
+.demo-bar b{font-weight:700}
+@media (max-width:640px){.demo-bar{font-size:.76rem;padding:6px 12px}.demo-more{display:none}}
 .promo{background:var(--rosa-accent);color:var(--white);font-size:.92rem}
 .promo .wrap{display:flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding-block:8px;text-align:center}
 .promo a{font-weight:700;white-space:nowrap}

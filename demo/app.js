@@ -233,7 +233,9 @@
     const okBox = $('#f-ok'); $('#e-ok').textContent = okBox.checked ? '' : 'Marca la casilla para suscribirte.';
     if (!okBox.checked && !first) first = okBox;
     if (first) { first.focus(); return; }
-    f.innerHTML = `<div class="form-done"><h3>¡Bienvenido a la familia, ${$('#f-name').value.trim()}!</h3><p>Te enviamos tu código del 10% a tu correo.</p></div>`;
+    const name = $('#f-name').value.trim();
+    f.innerHTML = '<div class="form-done"><h3></h3><p>Esta es una demo: tus datos no se enviaron ni se guardaron. En el sitio real aquí recibirías tu código del 10%.</p></div>';
+    f.querySelector('h3').textContent = `¡Así se vería tu bienvenida, ${name}!`;
   });
 
   renderFilters(); renderGrid(); renderCart();
