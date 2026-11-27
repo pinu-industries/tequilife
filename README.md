@@ -15,7 +15,6 @@ La demo conserva la identidad de la marca (logo, fotos y colores) y resuelve los
 Desde la raíz del proyecto:
 
 ```bash
-cd demo
 python3 -m http.server 8765
 ```
 
@@ -54,14 +53,16 @@ Los enlaces se pueden combinar, por ejemplo `/?demo&color=azul`.
 ## Estructura
 
 ```
-demo/
 ├── index.html   Página principal
 ├── 404.html     Página de error
 ├── styles.css   Estilos de ambas páginas (la sección 404 está al final)
 ├── app.js       Lógica de la página principal
 ├── 404.js       Lógica de la 404
+├── robots.txt   Bloquea la indexación en buscadores
 └── assets/      Imágenes en WebP
 ```
+
+Los archivos están en la raíz del repositorio para que GitHub Pages pueda publicarlos directamente desde la rama `main`.
 
 ## Sistema visual
 
