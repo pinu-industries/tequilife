@@ -39,29 +39,15 @@
 </svg>
 
 <div class="demo-bar" role="note">
-  <p><b>Propuesta de diseño</b> por Pinu Industries · No es la tienda oficial de TEQUILIFE.<span class="demo-more"> Los pedidos y formularios no se envían.</span></p>
-</div>
-
-<!-- Age gate -->
-<div class="gate on-dark" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" hidden>
-  <div class="gate-card">
-    <span class="logo" role="img" aria-label="TEQUILIFE Tequila"></span>
-    <div class="gate-dots" aria-hidden="true"><i style="background:var(--rosa-field)"></i><i style="background:var(--azul-field)"></i><i style="background:var(--anejo-field)"></i></div>
-    <h2 id="gate-title">¿Eres mayor de edad?</h2>
-    <p>Para entrar necesitas tener 18 años o más. Disfruta con responsabilidad.</p>
-    <div class="gate-actions">
-      <button class="btn btn-lime" id="gate-yes">Sí, tengo 18 o más</button>
-      <button class="btn btn-ghost" id="gate-no">No</button>
-    </div>
-    <p class="small" id="gate-msg" aria-live="polite">Al entrar aceptas nuestros términos y aviso de privacidad.</p>
-  </div>
+  <p class="demo-more"><b>Propuesta de diseño</b> por Pinu Industries · No es la tienda oficial de TEQUILIFE. Los pedidos y formularios no se envían.</p>
+  <p class="demo-short"><b>Demo</b> de Pinu Industries · No es la tienda oficial</p>
 </div>
 
 <!-- Promo -->
 <div class="promo" id="promo">
   <div class="wrap">
     <svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg>
-    <p>¡Que tu posada tenga color! Compra 12 piezas y llévate una piñata exclusiva de regalo. <a href="#posada">Ver promo</a></p>
+    <p><span class="promo-more">¡Que tu posada tenga color! </span>Compra 12 piezas y llévate una piñata<span class="promo-more"> exclusiva</span> de regalo. <a href="#posada">Ver promo</a></p>
     <button class="promo-close" id="promo-close" aria-label="Cerrar aviso"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
   </div>
 </div>
@@ -89,7 +75,7 @@
   </div>
 </header>
 
-<div class="mobile-menu on-dark" id="mobile-menu" aria-label="Menú">
+<div class="mobile-menu on-dark" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú">
   <div class="mobile-menu-top">
     <span class="logo" style="width:124px" aria-hidden="true"></span>
     <button class="tool" id="menu-close" aria-label="Cerrar menú"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
@@ -399,6 +385,21 @@
   <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
   <span id="toast-text">Agregado al carrito</span>
   <button id="toast-view">Ver carrito</button>
+</div>
+
+<!-- Age gate -->
+<div class="gate on-dark" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" hidden>
+  <div class="gate-card">
+    <span class="logo" role="img" aria-label="TEQUILIFE Tequila"></span>
+    <div class="gate-dots" aria-hidden="true"><i style="background:var(--rosa-field)"></i><i style="background:var(--azul-field)"></i><i style="background:var(--anejo-field)"></i></div>
+    <h2 id="gate-title">¿Eres mayor de edad?</h2>
+    <p>Para entrar necesitas tener 18 años o más. Disfruta con responsabilidad.</p>
+    <div class="gate-actions">
+      <button class="btn btn-lime" id="gate-yes">Sí, tengo 18 o más</button>
+      <button class="btn btn-ghost" id="gate-no">No</button>
+    </div>
+    <p class="small" id="gate-msg" aria-live="polite">Al entrar aceptas nuestros términos y aviso de privacidad.</p>
+  </div>
 </div>
 
 <script src="app.js" defer></script>
