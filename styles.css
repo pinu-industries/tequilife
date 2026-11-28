@@ -84,8 +84,8 @@ p{margin:0;text-wrap:pretty}
 .menu-btn{display:none}
 
 /* Mobile menu */
-.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--teal-950);color:var(--lime);display:flex;flex-direction:column;padding:20px var(--pad) 32px;clip-path:circle(0 at calc(100% - 40px) 36px);visibility:hidden;transition:clip-path .55s var(--ease-out),visibility 0s .55s}
-.mobile-menu.is-open{clip-path:circle(150% at calc(100% - 40px) 36px);visibility:visible;transition:clip-path .6s var(--ease-out),visibility 0s}
+.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--teal-950);color:var(--lime);display:flex;flex-direction:column;overflow-y:auto;padding:var(--top,20px) var(--pad) 32px;clip-path:circle(0 at var(--mx,calc(100% - 40px)) var(--my,36px));visibility:hidden;transition:clip-path .55s var(--ease-out),visibility 0s .55s}
+.mobile-menu.is-open{clip-path:circle(150% at var(--mx,calc(100% - 40px)) var(--my,36px));visibility:visible;transition:clip-path .6s var(--ease-out),visibility 0s}
 .mobile-menu-top{display:flex;justify-content:space-between;align-items:center;height:52px}
 .mobile-menu nav{display:flex;flex-direction:column;margin-top:36px}
 .mobile-menu nav a{font-family:var(--display);font-weight:800;font-size:clamp(2rem,9vw,3rem);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(239,250,182,.16)}
