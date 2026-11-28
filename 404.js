@@ -9,8 +9,9 @@
 
   // Menú móvil
   const menu = $('#mobile-menu');
-  const open = () => { menu.classList.add('is-open'); $('#menu-open').setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; setTimeout(() => $('#menu-close').focus(), 80); };
-  const close = () => { menu.classList.remove('is-open'); $('#menu-open').setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
+  const isolate = el => [...document.body.children].forEach(c => { if (c.tagName !== 'SCRIPT') c.inert = !!el && c !== el; });
+  const open = () => { isolate(menu); menu.classList.add('is-open'); $('#menu-open').setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; setTimeout(() => $('#menu-close').focus(), 80); };
+  const close = () => { if (!menu.classList.contains('is-open')) return; isolate(null); menu.classList.remove('is-open'); $('#menu-open').setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; $('#menu-open').focus({ preventScroll: true }); };
   $('#menu-open').addEventListener('click', open);
   $('#menu-close').addEventListener('click', close);
   addEventListener('keydown', e => { if (e.key === 'Escape') close(); });

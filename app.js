@@ -109,15 +109,23 @@
     if (e.target.closest('#checkout')) showToast('Demo: aquí continúa el pago seguro', false);
   });
 
+  // Con una ventana abierta, el resto de la página queda inerte: el foco no puede salir de ella
+  const isolate = el => [...document.body.children].forEach(c => {
+    if (c.tagName !== 'SCRIPT' && c.id !== 'scrim' && c.id !== 'toast') c.inert = !!el && c !== el;
+  });
+
   let lastFocus;
   function openCart() {
     lastFocus = document.activeElement;
     $('#toast').classList.remove('is-show');
     $('#drawer').classList.add('is-open'); $('#scrim').classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    isolate($('#drawer'));
     setTimeout(() => $('#cart-close').focus(), 60);
   }
   function closeCart() {
+    if (!$('#drawer').classList.contains('is-open')) return;
+    isolate(null);
     $('#drawer').classList.remove('is-open'); $('#scrim').classList.remove('is-open');
     document.body.style.overflow = '';
     lastFocus && lastFocus.focus && lastFocus.focus();
@@ -193,11 +201,11 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   const menu = $('#mobile-menu');
-  const openMenu = () => { menu.classList.add('is-open'); $('#menu-open').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; setTimeout(()=>$('#menu-close').focus(),80); };
-  const closeMenu = () => { menu.classList.remove('is-open'); $('#menu-open').setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  const openMenu = () => { isolate(menu); menu.classList.add('is-open'); $('#menu-open').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; setTimeout(()=>$('#menu-close').focus(),80); };
+  const closeMenu = (restore = true) => { if (!menu.classList.contains('is-open')) return; isolate(null); menu.classList.remove('is-open'); $('#menu-open').setAttribute('aria-expanded','false'); document.body.style.overflow=''; if (restore) $('#menu-open').focus({ preventScroll: true }); };
   $('#menu-open').addEventListener('click', openMenu);
   $('#menu-close').addEventListener('click', closeMenu);
-  $$('#mobile-menu nav a').forEach(a => a.addEventListener('click', closeMenu));
+  $$('#mobile-menu nav a').forEach(a => a.addEventListener('click', () => closeMenu(false)));
 
   // Sección activa en el menú
   const links = $$('.nav a');
@@ -215,8 +223,8 @@
   const gate = $('#gate');
   const skipGate = new URLSearchParams(location.search).has('demo');
   let ok = false; try { ok = localStorage.getItem('tqlf-age') === '1'; } catch {}
-  if (!ok && !skipGate) { gate.hidden = false; document.body.style.overflow = 'hidden'; $('#gate-yes').focus(); }
-  $('#gate-yes').addEventListener('click', () => { try { localStorage.setItem('tqlf-age','1'); } catch {} gate.hidden = true; document.body.style.overflow = ''; });
+  if (!ok && !skipGate) { gate.hidden = false; isolate(gate); document.body.style.overflow = 'hidden'; $('#gate-yes').focus(); }
+  $('#gate-yes').addEventListener('click', () => { try { localStorage.setItem('tqlf-age','1'); } catch {} gate.hidden = true; isolate(null); document.body.style.overflow = ''; });
   $('#gate-no').addEventListener('click', () => { $('#gate-msg').textContent = 'Lo sentimos, necesitas ser mayor de edad para visitar este sitio.'; });
 
   /* ---------- Newsletter ---------- */
